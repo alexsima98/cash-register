@@ -6,6 +6,9 @@ RSpec.describe "Products", type: :request do
       get "/products/index"
       expect(response).to have_http_status(:success)
     end
+    it 'assigns all products to @products' do
+      get '/'
+      expect(assigns(:products)).to eq(Product.all)
+    end
   end
-
 end
