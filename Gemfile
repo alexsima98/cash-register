@@ -33,7 +33,11 @@ group :development, :test do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 5.1.1'
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails', '~> 6.0.0.rc1'
+  gem "rails-controller-testing"
+  gem 'shoulda-matchers', '~> 5.0'
+  gem 'pry-byebug'
 end
 
 group :development do
