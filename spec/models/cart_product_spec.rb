@@ -4,7 +4,7 @@ RSpec.describe CartProduct, type: :model do
   subject do
     product = Product.create!(product_code: 'SR1', name: 'Strawberry', price: 5.00)
     cart = Cart.create!
-    described_class.create!(cart: cart, product: product)
+    described_class.create!(cart: cart, product: product, quantity: 1)
   end
 
   describe 'Association' do
@@ -16,9 +16,7 @@ RSpec.describe CartProduct, type: :model do
     it 'is valid with valid attributes' do
       expect(subject).to be_valid
     end
-    it 'is valid even without a quantity attribute (defaults to 1)' do
-      expect(subject).to be_valid
-    end
+
     it 'is not valid without a product' do
       subject.product = nil
       expect(subject).to_not be_valid
