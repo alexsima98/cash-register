@@ -15,6 +15,16 @@ class CartProductsController < ApplicationController
   end
 
   def remove
+    cart_product = @cart.cart_products.find_by(product: @product)
+    cart_product.quantity -= 1
+
+    if cart_product.quantity.zero?
+      cart_product.destroy!
+    else
+      cart_product.save
+    end
+
+    redirect_to root_path
   end
 
   private

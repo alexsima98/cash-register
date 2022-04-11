@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'products/index'
   root to: 'products#index'
   post 'cart/:cart_id/add/:product_id', to: 'cart_products#add', as: :add_cart_product
   post 'cart/:cart_id/remove/:product_id', to: 'cart_products#remove', as: :remove_cart_product
