@@ -24,6 +24,9 @@ RSpec.describe Discount, type: :model do
       subject.min_quantity = -3
       expect(subject).not_to be_valid
     end
-
+    it 'is valid only with an integer pay_one_get_more ' do
+      subject.pay_one_get_more = 2.12
+      expect(subject).not_to be_valid
+    end
   end
 end
