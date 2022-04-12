@@ -1,24 +1,25 @@
-<div class="d-flex justify-content-center">
-  <h2>Products list</h2>
-</div>
-
+<div class="d-flex justify-content-between">
 <div class="container w-50 p-3">
+  <div class="d-flex justify-content-center">
+    <h2>Products list</h2>
+  </div>
   <% @products.each do |product| %>
   <div class="d-flex card-product justify-content-between">
     <div class="card-product-infos">
       <h2><%= product.product_code %>-<%= product.name %> <%= number_to_currency(product.price) %></h2>
     </div>
     <div class="d-flex justify-content-between">
-      <%= link_to '-', remove_cart_product_path(@cart, product), method: :post, class: "btn btn-ghost" %>
       <%= link_to '+', add_cart_product_path(@cart, product), method: :post, class: "btn btn-ghost" %>
     </div>
   </div>
   <% end %>
 </div>
-
-<div class="cart">
+<div class="container w-50 p-3">
+<div class="d-flex cart justify-content-center">
   <h2>Cart</h2>
+</div>
   <% @cart.cart_products.each do |item| %>
     <%= render 'shared/show_cart_product', cart_product: item %>
   <% end %>
 </div>
+
