@@ -14,12 +14,15 @@
   </div>
   <% end %>
 </div>
-<div class="container w-50 p-3">
-<div class="d-flex cart justify-content-center">
-  <h2>Cart</h2>
-</div>
+<div class="cart container w-50 p-3">
+  <div class="d-flex cart justify-content-center">
+    <h2>Cart</h2>
+  </div>
   <% @cart.cart_products.each do |item| %>
     <%= render 'shared/show_cart_product', cart_product: item %>
   <% end %>
 </div>
+  <div class="cart-total-price card-product fixed-bottom justify-content-center">
+    <h2>Total price: <%= number_to_currency(@cart.total_cost) %> </h2>
+  </div>
 
