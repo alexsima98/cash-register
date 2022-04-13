@@ -1,4 +1,4 @@
 <div class="card-product justify-content-between">
-  <h2><%= cart_product.product.name %> x <%= cart_product.quantity %> - <%= number_to_currency(cart_product.product.price * cart_product.quantity) %></h2>
+  <h2><%= cart_product.product.name %> x <%= cart_product.quantity %> - <%= number_to_currency(cart_product.total_cost) %></h2>
   <%= link_to '-', remove_cart_product_path(@cart, cart_product.product), method: :post, class: "btn btn-ghost" %>
 </div>

@@ -14,10 +14,11 @@ products_data.each do |data|
 end
 puts 'Products done!'
 
-discounts_data = [{ type_of_discount: 'pay_one_get_more', pay_one_get_more: 1, min_quantity: 1, product: Product.find_by(product_code: 'GR1') },
+discounts_data = [{ type_of_discount: 'pay_one_get_more', pay_one_get_more: 1, min_quantity: 1,
+                    product: Product.find_by(product_code: 'GR1') },
                   { type_of_discount: 'percentage', percentage: 9.0 / 10, min_quantity: 3,
                     product: Product.find_by(product_code: 'SR1') },
-                  { type_of_discount: 'percentage', percentage: 2.0 / 3, min_quantity: 3,
+                  { type_of_discount: 'percentage', percentage: 6.6 / 10, min_quantity: 3,
                     product: Product.find_by(product_code: 'CF1') }]
 
 puts 'Discounts...'
