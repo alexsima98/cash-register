@@ -7,7 +7,7 @@ class CartProductsController < ApplicationController
     if cart_product
       if cart_product.product.discount.type_of_discount === 'pay_one_get_more'
         cart_product.quantity = cart_product.quantity + (cart_product.product.discount.pay_one_get_more + 1)
-        cart.product.save!
+        cart_product.save!
       else
         cart_product.quantity += 1
         cart_product.save!
