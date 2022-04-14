@@ -5,8 +5,13 @@ class CartProductsController < ApplicationController
     cart_product = @cart.cart_products.find_by(product: @product)
 
     if cart_product
-      cart_product.quantity += 1
-      cart_product.save!
+      if cart_product.product.discount.type_of_discount === 'pay_one_get_more'
+        cart_product.quantity = cart_product.product.discount.pay_one_get_more + 1
+        cart.product.save!
+      else
+        cart_product.quantity += 1
+        cart_product.save!
+      end
     else
       CartProduct.create(product: @product, cart: @cart)
     end
