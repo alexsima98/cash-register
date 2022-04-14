@@ -1,5 +1,4 @@
 <% @products.each do |product| %>
-
   <div class="d-flex card-product justify-content-between">
       <div class="card-product-infos">
         <h2><%= product.product_code %>-<%= product.name %> <%= number_to_currency(product.price) %></h2>
