@@ -9,7 +9,7 @@ class CartProduct < ApplicationRecord
       if discount.type_of_discount === 'percentage'
         (product.price * discount.percentage * quantity).round(2)
       elsif discount.type_of_discount === 'pay_one_get_more'
-        product.price * quantity
+        (product.price * quantity) / ( product.discount.pay_one_get_more + 1 )
       end
     else
       product.price * quantity
