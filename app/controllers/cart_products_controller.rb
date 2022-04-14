@@ -16,6 +16,7 @@ class CartProductsController < ApplicationController
       if @product.discount.type_of_discount === 'pay_one_get_more'
         bonus = CartProduct.create(product: @product, cart: @cart)
         bonus.quantity += @product.discount.pay_one_get_more
+        bonus.save!
       else
         CartProduct.create(product: @product, cart: @cart)
       end
