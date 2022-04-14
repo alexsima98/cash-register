@@ -1,0 +1,17 @@
+<% @products.each do |product| %>
+
+  <div class="d-flex card-product justify-content-between">
+      <div class="card-product-infos">
+        <h2><%= product.product_code %>-<%= product.name %> <%= number_to_currency(product.price) %></h2>
+        <% bonus = product.discount %>
+        <% if bonus.type_of_discount === "pay_one_get_more" %>
+          <p> Buy one to get <%= bonus.pay_one_get_more %> free </p>
+          <% elsif bonus.type_of_discount === "percentage" %>
+            <p> Buy <%= bonus.min_quantity %> or more to get <%= (1 - bonus.percentage).round(2) * 100 %>% discount </p>
+        <% end %>
+      </div>
+      <div class="button">
+        <%= link_to '+', add_cart_product_path(@cart, product), method: :post, class: "btn btn-ghost" %>
+      </div>
+  </div>
+<% end %>
