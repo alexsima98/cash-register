@@ -13,7 +13,12 @@ class CartProductsController < ApplicationController
         cart_product.save!
       end
     else
-      CartProduct.create(product: @product, cart: @cart)
+      if @product.discount.type_of_discount === 'pay_one_get_more'
+        bonus = CartProduct.create(product: @product, cart: @cart)
+        bonus.quantity += @product.discount.pay_one_get_more
+      else
+        CartProduct.create(product: @product, cart: @cart)
+      end
     end
 
     redirect_to root_path
